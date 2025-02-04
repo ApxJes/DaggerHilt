@@ -3,6 +3,9 @@ plugins {
     alias(libs.plugins.kotlin.android)
     id("com.google.dagger.hilt.android")
     kotlin("kapt")
+
+    id("androidx.navigation.safeargs.kotlin")
+    id ("kotlin-parcelize")
 }
 
 android {
@@ -76,5 +79,16 @@ dependencies {
 
     // Logging interceptor for debugging API requests and responses
     implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
+
+    // Room
+    implementation ("androidx.room:room-runtime:2.6.0")
+    kapt("androidx.room:room-compiler:2.6.0")
+
+    // Kotlin Extensions and Coroutines support for Room
+    implementation ("androidx.room:room-ktx:2.6.0")
+
+    // Navigation Components
+    implementation ("androidx.navigation:navigation-fragment-ktx:2.7.5")
+    implementation ("androidx.navigation:navigation-ui-ktx:2.7.5")
 
 }
