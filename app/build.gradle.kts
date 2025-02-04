@@ -35,6 +35,12 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+    kapt {
+        correctErrorTypes = true
+    }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -48,17 +54,27 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
+    // Hilt Dependencies
     implementation("com.google.dagger:hilt-android:2.50")
     kapt("com.google.dagger:hilt-compiler:2.50")
 
-    // For ViewModel injection
-    implementation("androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03")
-    kapt("androidx.hilt:hilt-compiler:1.0.0")
-
-    // For Hilt with Navigation (Optional)
+    // Hilt with Navigation (For Fragments)
     implementation("androidx.hilt:hilt-navigation-fragment:1.0.0")
 
-    // Activity KTX for viewModel
+    // ViewModel & LiveData
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
+
+    // Activity KTX (For ViewModel delegation)
     implementation("androidx.activity:activity-ktx:1.8.2")
+
+    // Retrofit core library
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+
+    // Converter for JSON (Gson is commonly used)
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
+    // Logging interceptor for debugging API requests and responses
+    implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
 
 }
