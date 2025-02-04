@@ -9,12 +9,20 @@
         android:id="@+id/addNoteFragment"
         android:name="com.example.dagger_hilt.ui.AddNoteFragment"
         android:label="fragment_add_note"
-        tools:layout="@layout/fragment_add_note" />
+        tools:layout="@layout/fragment_add_note" >
+        <action
+            android:id="@+id/action_addNoteFragment_to_noteListFragment"
+            app:destination="@id/noteListFragment" />
+    </fragment>
     <fragment
         android:id="@+id/updateNoteFragment"
         android:name="com.example.dagger_hilt.ui.UpdateNoteFragment"
         android:label="fragment_update_note"
-        tools:layout="@layout/fragment_update_note" />
+        tools:layout="@layout/fragment_update_note" >
+        <action
+            android:id="@+id/action_updateNoteFragment_to_noteListFragment"
+            app:destination="@id/noteListFragment" />
+    </fragment>
     <fragment
         android:id="@+id/noteListFragment"
         android:name="com.example.dagger_hilt.ui.NoteListFragment"

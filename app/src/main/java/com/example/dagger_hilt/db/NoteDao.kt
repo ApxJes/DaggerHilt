@@ -1,5 +1,7 @@
 package com.example.dagger_hilt.db
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
@@ -22,8 +24,8 @@ interface NoteDao {
      suspend fun deleteNote(note: Note)
 
     @Query("SELECT * FROM $TABLE_NAME ORDER BY noteId DESC")
-    fun getAllData(): MutableList<Note>
+    fun getAllData(): LiveData<List<Note>>
 
     @Query("SELECT * FROM $TABLE_NAME WHERE noteId like :id")
-    fun getNote(id: Int): Note
+    fun getNote(id: Int): LiveData<Note>
 }

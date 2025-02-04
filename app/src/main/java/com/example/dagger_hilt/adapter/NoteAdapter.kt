@@ -9,8 +9,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dagger_hilt.R
 import com.example.dagger_hilt.model.Note
+import javax.inject.Inject
 
-class NoteAdapter: RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
+class NoteAdapter @Inject constructor()
+    : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
 
     lateinit var title: TextView
     inner class NoteViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
@@ -38,8 +40,11 @@ class NoteAdapter: RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
 
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
         val note = differ.currentList[position]
+
+        title = holder.itemView.findViewById(R.id.txvTitle)
+
         holder.itemView.apply {
-            val title = note.noteTitle
+            title.text = note.noteTitle
             setOnClickListener {
                 onItemClick?.let { it(note) }
             }
