@@ -44,6 +44,11 @@ class NoteListFragment : Fragment(R.layout.fragment_note_list) {
         binding.floatingActionBtnAdd.setOnClickListener {
             findNavController().navigate(R.id.action_noteListFragment_to_addNoteFragment)
         }
+
+        adapter.onItemClickListener {
+            val action = NoteListFragmentDirections.actionNoteListFragmentToUpdateNoteFragment(it)
+            findNavController().navigate(action)
+        }
     }
 
     private fun setUpRecyclerView(){
